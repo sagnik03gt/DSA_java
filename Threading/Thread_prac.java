@@ -8,6 +8,11 @@ public class Thread_prac {
         Task t1 = new Task("Thread-A");
         t1.start();
 
+        Work w1 = new Work();
+
+        Thread t3 = new Thread(w1);
+        t3.start();
+
         Task t2 = new Task("Thread-B");
         t2.start();
         System.out.println("Hello World!");
@@ -30,6 +35,15 @@ class Task extends Thread{
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+        }
+    }
+}
+class Work implements Runnable{
+
+    @Override
+    public void run() {
+        for(int i =0;i<=50;i++){
+            System.out.println("i am runnable thread");
         }
     }
 }
